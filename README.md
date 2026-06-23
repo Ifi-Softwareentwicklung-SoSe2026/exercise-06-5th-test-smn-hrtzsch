@@ -184,6 +184,10 @@ Ihre Aufgabe ist dann:
 
 ## UML-Dokumentation
 
+## Bebaubarkeitsprüfung
+
+Die Klasse `Bauverwaltung` prüft vor einer Reservierung mit `BebaubarkeitPruefen`, ob eine Fläche existiert, den Status `frei` hat und nicht als `nein` bebaubar markiert ist. `ReserviereFlaeche` ändert den Status nur bei erfolgreicher Prüfung auf `reserviert`; bereits `bebaut`e oder anderweitig gesperrte Flächen werden nicht erneut reserviert.
+
 Falls im Verlauf der Jürgen-Issues ein UML-Klassendiagramm gefordert wird, ergänzen Sie es in diesem Abschnitt.
 
 ```text @plantUML
@@ -231,9 +235,14 @@ Bauverwaltung "1" o-- "*" Bauvorhaben : verwaltet
 Bauvorhaben "*" -- "1" Antragsteller : beantragt von
 Bauvorhaben "*" -- "1..*" Bauflaeche : belegt
 
-note right of Bauflaeche : Status: frei, reserviert, bebaut
-note right of Bauvorhaben : Status: eingereicht, genehmigt, 
-abgelehnt, in Bearbeitung, abgeschlossen
+note right of Bauflaeche
+  Status: frei, reserviert, bebaut
+end note
+
+note right of Bauvorhaben
+  Status: eingereicht, genehmigt,
+  abgelehnt, in Bearbeitung, abgeschlossen
+end note
 
 @enduml
 ```
