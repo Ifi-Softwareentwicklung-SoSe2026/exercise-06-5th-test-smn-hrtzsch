@@ -6,6 +6,7 @@ public class Bauflaeche
     public string Name { get; set; } = string.Empty;
     public double Groesse { get; set; }
     public string Status { get; set; } = "frei";
+    public string Bebaubarkeit { get; set; } = "ja";
 }
 
 public class Bauvorhaben
