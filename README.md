@@ -189,6 +189,52 @@ Falls im Verlauf der J√ºrgen-Issues ein UML-Klassendiagramm gefordert wird, erg√
 ```text @plantUML
 @startuml
 
+class Bauverwaltung {
+    - _flaechen: List<Bauflaeche>
+    - _vorhaben: List<Bauvorhaben>
+    + AddFlaeche(flaeche: Bauflaeche): void
+    + AddVorhaben(vorhaben: Bauvorhaben): void
+    + ListAll(): void
+}
+
+class Bauflaeche {
+    + Id: int
+    + Name: string
+    + Groesse: double
+    + Status: string
+    -- Metadaten --
+    + FlurstueckNummer: string
+    + BPlanNummer: string
+    + Bodenrichtwert: double
+    + Eigentuemer: string
+    + Nutzung: string
+    + Bebaubarkeit: string
+}
+
+class Bauvorhaben {
+    + Id: int
+    + Beschreibung: string
+    + Status: string
+    + GeplanteNutzung: string
+    + Beginn: DateTime
+    + Fertigstellung: DateTime
+}
+
+class Antragsteller {
+    + Name: string
+    + Kontaktdaten: string
+    + Firma: string
+}
+
+Bauverwaltung "1" o-- "*" Bauflaeche : verwaltet
+Bauverwaltung "1" o-- "*" Bauvorhaben : verwaltet
+Bauvorhaben "*" -- "1" Antragsteller : beantragt von
+Bauvorhaben "*" -- "1..*" Bauflaeche : belegt
+
+note right of Bauflaeche : Status: frei, reserviert, bebaut
+note right of Bauvorhaben : Status: eingereicht, genehmigt, 
+abgelehnt, in Bearbeitung, abgeschlossen
+
 @enduml
 ```
 @plantUML.eval(png)
