@@ -21,6 +21,7 @@ class Program
             verwaltung.AddFlaeche(new Bauflaeche { Id = 2, Name = "Industriegebiet Nord", Groesse = 5000.0, Status = "bebaut", Bebaubarkeit = "ja" });
             verwaltung.AddVorhaben(new Bauvorhaben { Id = 101, Beschreibung = "Wohnkomplex Sonnenblick", Status = "geplant" });
             verwaltung.AddVorhaben(new Bauvorhaben { Id = 102, Beschreibung = "Logistikzentrum Ost", Status = "in Bearbeitung" });
+            verwaltung.AddVorhaben(new Bauvorhaben { Id = 103, Beschreibung = "Projekt Rose", Status = "geplant" });
 
             Console.WriteLine(verwaltung.ReserviereFlaeche(1)
                 ? "Fläche 1 wurde reserviert."
