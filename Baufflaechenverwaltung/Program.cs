@@ -37,9 +37,16 @@ class Program
         {
             verwaltung.ListAll();
         }
+        else if (command == "help")
+        {
+            Console.WriteLine("Verfügbare Befehle:");
+            Console.WriteLine("  sample  - Beispieldaten laden und ausgeben");
+            Console.WriteLine("  list    - Alle Flächen und Vorhaben anzeigen");
+            Console.WriteLine("  help    - Diese Hilfe anzeigen");
+        }
         else
         {
-            Console.WriteLine($"Unbekannter Befehl: {command}");
+            Console.WriteLine($"Unbekannter Befehl: {command}. Nutzen Sie 'help' für eine Übersicht.");
         }
     }
 }
