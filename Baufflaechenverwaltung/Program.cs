@@ -17,8 +17,8 @@ class Program
 
         if (command == "sample")
         {
-            verwaltung.AddFlaeche(new Bauflaeche { Id = 1, Name = "Zentralfläche A", Groesse = 1200.5, Status = "frei", Bebaubarkeit = "ja" });
-            verwaltung.AddFlaeche(new Bauflaeche { Id = 2, Name = "Industriegebiet Nord", Groesse = 5000.0, Status = "bebaut", Bebaubarkeit = "ja" });
+            verwaltung.AddFlaeche(new Bauflaeche(1, "Zentralfläche A", 1200.5) { Status = "frei", Bebaubarkeit = "ja" });
+            verwaltung.AddFlaeche(new Bauflaeche(2, "Industriegebiet Nord", 5000.0) { Status = "bebaut", Bebaubarkeit = "ja" });
             verwaltung.AddVorhaben(new Bauvorhaben { Id = 101, Beschreibung = "Wohnkomplex Sonnenblick", Status = "geplant" });
             verwaltung.AddVorhaben(new Bauvorhaben { Id = 102, Beschreibung = "Logistikzentrum Ost", Status = "in Bearbeitung" });
 
