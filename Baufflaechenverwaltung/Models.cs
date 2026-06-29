@@ -2,6 +2,13 @@ namespace Baufflaechenverwaltung;
 
 public class Bauflaeche
 {
+    public Bauflaeche(int id, string name, double groesse)
+    {
+        Id = id;
+        Name = name;
+        Groesse = groesse;
+    }
+
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public double Groesse { get; set; }
