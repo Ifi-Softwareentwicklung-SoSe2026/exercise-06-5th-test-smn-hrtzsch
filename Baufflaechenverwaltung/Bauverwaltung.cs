@@ -51,4 +51,13 @@ public class Bauverwaltung
             Console.WriteLine($"ID: {v.Id}, Beschreibung: {v.Beschreibung}, Status: {v.Status}");
         }
     }
+
+    public void ExportReservierteCsv(string filePath)
+    {
+        var reservierte = _flaechen
+            .Where(f => f.Status.Equals("reserviert", StringComparison.OrdinalIgnoreCase))
+            .Select(f => $"{f.Id},{f.Name},{f.Groesse},{f.Status},{f.Bebaubarkeit}");
+
+        File.WriteAllLines(filePath, reservierte);
+    }
 }
