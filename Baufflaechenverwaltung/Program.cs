@@ -31,6 +31,7 @@ class Program
             
             Console.WriteLine("Beispieldaten wurden hinzugefügt:");
             verwaltung.ListAll();
+            verwaltung.ExportReservierteCsv("reserviert.csv");
         }
         else if (command == "list")
         {
