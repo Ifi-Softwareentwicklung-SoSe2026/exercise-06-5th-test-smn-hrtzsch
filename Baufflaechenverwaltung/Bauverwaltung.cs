@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 
 namespace Baufflaechenverwaltung;
 
@@ -50,5 +52,32 @@ public class Bauverwaltung
         {
             Console.WriteLine($"ID: {v.Id}, Beschreibung: {v.Beschreibung}, Status: {v.Status}");
         }
+    }
+
+    public void SaveToJson(string filePath)
+    {
+        var data = new { Flaechen = _flaechen, Vorhaben = _vorhaben };
+        string json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(filePath, json);
+    }
+
+    public void LoadFromJson(string filePath)
+    {
+        if (!File.Exists(filePath)) return;
+        string json = File.ReadAllText(filePath);
+        var data = JsonSerializer.Deserialize<PersistenceData>(json);
+        if (data != null)
+        {
+            _flaechen.Clear();
+            _flaechen.AddRange(data.Flaechen ?? new List<Bauflaeche>());
+            _vorhaben.Clear();
+            _vorhaben.AddRange(data.Vorhaben ?? new List<Bauvorhaben>());
+        }
+    }
+
+    private class PersistenceData
+    {
+        public List<Bauflaeche>? Flaechen { get; set; }
+        public List<Bauvorhaben>? Vorhaben { get; set; }
     }
 }
